@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark x CPS tester</title>
+    <link rel="shortcut icon" href="cps-img.png">
+    <style>
+        
+        body {
+            background-color: darkslategray;
+            transition: 0.5s;
+        }
+        
+        #con {
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            flex-direction: column;
+            height: 300px;
+            width: 900px;
+            background-color: #090909;
+            border-radius: 5%;
+            border: #282828 solid 10px;
+            transition: 0.1s;
+        }
+        #con:hover{
+            background-color: #181818;
+        }
+        #con:active {
+            background-color: #090909;
+        }
+        #cont {
+            display: flex;
+            align-items: center;
+            margin-left: 200px;
+            flex-direction: row;
+        }
+        
+        button {
+            background-color: blue;
+            color: white;
+            border-radius: 20%;
+        }
+        #coun {
+            font-size: 23px;
+            color: #00ff00;
+            margin-left: 500px;
+            display: inline;
+            
+        }
+        #count {
+            font-size: 50px;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: #d0d0d0;
+            display: inline;
+            
+        }
+        .count {
+            margin-top: 20px;
+            display: block;
+            color: white;
+
+        }
+        header {
+            width: 100%;
+            height: 100px;
+            background-color: #202020;
+            border: 1px solid  gray;
+        
+
+        } 
+        #tester {
+            display: flex;
+            align-items: center;
+            color: #999999;
+            flex-direction: column;
+            padding-top: 20px;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            
+
+        }
+        #start {
+            font-size: 25px;
+            margin-top: 130px;
+            font-weight: bolder;
+            color: gray;
+        }
+        #select {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .choose {
+            height: 20px;
+            width: 20px;
+            background-color: #090909;
+            color: white; 
+            font-weight: bolder;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 20px;
+            padding: 20px;
+            border: solid 5px #282828;
+            border-radius: 50%;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .choose:hover {
+            background-color: #444; /* example hover color */
+            color: white;
+        }
+
+        .selected {
+            background-color: #00ff00;
+            color: black;
+            font-weight: bolder;
+            font-size: 20px;
+        }
+
+        #secheading {
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+        .secheading {
+            font-size: 12px;
+            color: aliceblue;
+            margin-left: 75px;
+            margin-right: 75px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+        }
+        #counter {
+            font-size: 30px;
+            color: #d0d0d0;
+
+        }
+        #remaining {
+            display: inline;
+            margin-left: 240px;
+            color: #00ff00;
+        }
+        #resultEle {
+            height: 100px;
+            width: 100px;
+            background-color: #00ff00;
+        }
+        #test {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 10%;
+            background-color: #090909;
+            transform: translate(-50%,-50%);
+            color: white;
+            z-index: 1;
+            text-align: center;
+            border: 1px solid gray;
+            padding: 15px;
+            margin: auto;
+            width: 30%;
+            height: 70%;
+            word-spacing: 3;
+            line-height: 30px;
+            text-transform: upper;
+            box-shadow: 0 5px 5px #777;
+            transition-duration: 0.5s;    
+        }
+        #achivement, #cross {
+            display: inline;
+        }
+        #achivement {
+          
+            position: absolute;
+            padding-top: 3px;
+            padding-bottom: 3px;
+            padding-left: 20px;
+            padding-right: 20px;
+            left: 35%;
+            border-radius: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            background-color: #202020;
+            z-index: 1;
+        }
+        #tryagain {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 25px;
+            padding-right: 25px;
+            position: absolute;
+            bottom: 10%;
+            right: 31%;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 25px;
+            border-radius: 8px;
+            color: #090909;
+            background-color: #00ff00;
+            border: gray 1px solid;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        #tryagain:hover {
+            
+            background-color: #17ca17;
+        }
+        #tryagain:active {
+            background-color: #0a880a;
+        }
+
+        #cross {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-family: arial;
+            cursor: pointer;
+            
+        }
+        #cross:active {
+            color: gray;
+        }
+        #line1 {
+            position: absolute;
+            width: 100%;
+            top: 12%;
+            right: 0%;
+            border-color: #777;
+            
+        }
+        #yourclick {
+            position: absolute;
+            font-size: 30px;
+            top: 30%;
+            right: 23%;
+        }
+        #clickps {
+            position: absolute;
+            top: 50%;
+            right: 29%;
+            font-weight: bolder;
+            color: #00ff00;
+            font-family: arial;
+            font-size: 45px;
+        }
+        
+        
+        
+
+    </style>
+</head>
+<body>
+    <div id="mainbody">
+        <header>
+            <div id="tester">
+                Dark x CPS Tester
+            </div>
+        </header>
+    
+    
+        <div class="count">
+            <div id="coun">CLICK COUNT: </div>
+            <div id="count">0</div>
+            <span class="timer">
+                <div id="remaining">Time Remaining</div>
+                <span id="counter"></span>
+            </span>
+        </div>
+        <div id="cont">
+            <div id="con">
+                <div id="click"></div>
+                <div id="start">
+                    Start The CPS test (60 Second)
+                </div>
+            </div>
+        </div>
+        <div id="select">
+            <div class="choose" id="sec5"> 5 </div>
+            <div class="choose" id="sec10">10</div>
+            <div class="choose" id="sec30">30</div>
+            <div class="choose" id="sec60">60</div>
+        </div>
+        <div id="secheading">
+            <div class="secheading">Sec</div>
+            <div class="secheading">Sec</div>
+            <div class="secheading">Sec</div>
+            <div class="secheading">Sec</div>
+        </div>
+    </div>
+    <div id="test">
+        <div id="achivement">Achivement</div>
+        <div id="cross">X</div>
+        <hr id="line1">
+        <div id="yourclick">Your Click Speed Is</div>
+        <div id="clickps">4.00 CPS</div>
+        <div id="tryagain">Try Again</div>
+    </div>   
+    <script src="new.js"></script> 
+    <audio src="pop.mp3" id="myAudio"></audio>
+</body>
+</html>
